@@ -1,69 +1,72 @@
-﻿var bfclocale = {};
-bfclocale.locale = "en-US";
-bfclocale.localeName = "US English";
-bfclocale.defaultDateFormat = "MM/dd/yyyy";
+﻿"use strict";
 
-bfclocale.dow = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday"
-];
 
-bfclocale.dow_short = [
-    "Sun",
-    "Mon",
-    "Tue",
-    "Wed",
-    "Thu",
-    "Fri",
-    "Sat"
-];
+    var bfclocale = {};
+    bfclocale.locale = "en-US";
+    bfclocale.localeName = "US English";
+    bfclocale.defaultDateFormat = "MM/dd/yyyy";
 
-bfclocale.dow_firstletter = [
-    "S",
-    "M",
-    "T",
-    "W",
-    "T",
-    "F",
-    "S"
-];
+    bfclocale.dow = [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+    ];
 
-bfclocale.months = [
-    "January",
-    "Februrary",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"
-];
+    bfclocale.dow_short = [
+        "Sun",
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"
+    ];
 
-bfclocale.months_short = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec"
-];
+    bfclocale.dow_firstletter = [
+        "S",
+        "M",
+        "T",
+        "W",
+        "T",
+        "F",
+        "S"
+    ];
 
-bflocale.strings = {
-    ok: "Ok",
-    cancel: "Cancel"
-}
+    bfclocale.months = [
+        "January",
+        "Februrary",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
+    ];
+
+    bfclocale.months_short = [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec"
+    ];
+
+    bfclocale.strings = {
+        ok: "Ok",
+        cancel: "Cancel"
+    }
