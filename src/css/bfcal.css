@@ -1,0 +1,262 @@
+﻿body {
+}
+
+.bfcInner {
+    background-color: #f4f4f4;
+    /*padding: 10px;*/
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #333;
+    width: 400px;
+    overflow: hidden;
+    height: 320px;
+    /*outline: 1px solid silver;*/
+    clear: both;
+}
+
+.bfcItem {
+    width: 14.28%;
+    float: left;
+    height: 30px;
+    padding: 7px 0 0 0;
+    text-align: center;
+}
+
+.bfcHeader {
+    width: 99.96%;
+    float: left;
+    height: 35px;
+}
+
+.bfcDaysHeader {
+    background-color: #428BCA;
+    float: left;
+    width: 99.96%;
+    color: white;
+}
+
+
+
+.bfcDayHead {
+    background-color: transparent;
+}
+.bfcBlank {
+}
+
+.bfcDay {
+}
+
+.bfcDays {
+    float: left;
+    width: 100%;
+}
+
+.bfcSelectedDisplay {
+    float: left;
+    height: 25px;
+    width: 100%;
+    text-align: center;
+} 
+
+.clearfix:after {
+    content: ".";
+    visibility: hidden;
+    display: block;
+    height: 0;
+    clear: both;
+}
+
+.prevBtnContainer {
+    width: 10%;
+    float: left;
+    height: 100%;
+    text-align: center;
+}
+
+.nextBtnContainer {
+    width: 10%;
+    float: right;
+    height: 100%;
+    text-align: center;
+}
+
+.btnDateNav:disabled{
+    background-color: silver;
+}
+
+.btnDateNav:disabled:hover {
+    background-color: silver;
+}
+
+.btnDateNav:hover {
+    background-color: #3570A0;
+}
+
+.monthDesc {
+    width: 60%;
+    height: 100%;
+    float: left;
+    text-align: center;
+    font-size: 13pt;
+}
+
+.monthName {
+    text-align: right;
+    padding: 3px 20px 3px 3px;
+    cursor: pointer;
+    width: 65%;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAQCAMAAADOBMQXAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAMAUExURQAAAP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGd27GMAAAEAdFJOU////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////wBT9wclAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAGXRFWHRTb2Z0d2FyZQBwYWludC5uZXQgNC4wLjEyQwRr7AAAAEBJREFUKFOtzjEOACAIBEH9/6MR71YTiZ1uBVOgLW590F6yBhsJ5wV2ZdRdJLPxGraRPxRExZ4Umsyglp69asQAK1sHUGLagpYAAAAASUVORK5CYII=) no-repeat right center;
+}
+
+.monthName:hover {
+   
+}
+
+.yearName {
+    padding: 3px 3px 3px 3px;
+    cursor: pointer;
+    width: 35%;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAQCAMAAADOBMQXAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAMAUExURQAAAP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGd27GMAAAEAdFJOU////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////wBT9wclAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAGXRFWHRTb2Z0d2FyZQBwYWludC5uZXQgNC4wLjEyQwRr7AAAAEBJREFUKFOtzjEOACAIBEH9/6MR71YTiZ1uBVOgLW590F6yBhsJ5wV2ZdRdJLPxGraRPxRExZ4Umsyglp69asQAK1sHUGLagpYAAAAASUVORK5CYII=) no-repeat right center;
+}
+
+.yearName:hover {
+    
+}
+
+.bfcDay {
+    cursor: pointer;
+}
+
+.bfcSelectedDay {
+    background-color: #428BCA;
+    color: white;
+    font-weight: bold;
+}
+
+.bfcToday {
+    /*background-color: #FF3239;*/
+    /*color: #fff;*/
+    outline: 1px dotted #FF3239;
+    font-weight: bold;
+}
+
+.bfcDay:hover {
+    background-color: #5CB85C;
+    color: white;
+}
+
+
+.bfcInner button, .bfcYearSelector button, .bfcMonthSelector button {
+    color: #fff;
+    background-color: #428bca;
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.428571429;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    border-style: none;
+}
+
+.bfcHeader button:hover{
+    background-color: #3979AD;
+}
+
+.nextBtnContainer button, .prevBtnContainer button {
+    width: 100%;
+}
+
+.bfcCannotSelect{
+    cursor: not-allowed;
+    background-color: silver;
+}
+
+.bfcCannotSelect:hover {
+    background-color: silver;
+    color: #333;
+}
+
+.bfcMonthSelector {
+    background-color: #f4f4f4;
+    display: none;
+    /*padding: 10px;*/
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #333;
+    width: 400px;
+    overflow: hidden;
+    height: 320px;
+}
+
+
+.bfcYearSelector {
+    display: none;
+    background-color: #f4f4f4;
+    /*padding: 10px;*/
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #333;
+    width: 400px;
+    overflow: hidden;
+    height: 320px;
+}
+
+
+
+.bfcMonthTable {
+    width: 100%;
+    height: 100%;
+    border-collapse: collapse;
+}
+
+.bfcMonthTable td {
+    text-align: center;
+    border: 1px solid silver;
+    cursor: pointer;
+}
+
+.bfcMonthTable td:hover {
+    background-color: #428BCA;
+    color: white;
+}
+
+.bfcYearSelector {
+    text-align: center;
+}
+
+    .bfcYearSelector input {
+        width: 100px;
+        font-size: 15pt;
+        height: 35px;
+        width: 125px;
+    }
+
+        .bfcYearSelector input[type=number]::-webkit-outer-spin-button,
+        .bfcYearSelector input[type=number]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+.bfcYearSelector input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.bfcYearButtonHolder button{
+    margin: 10px 10px;
+    width: 100px;
+}
+
+.bfcYearEntry{
+    margin-top: 100px;
+}
+
+.bfcMonthTable td{
+    width: 25%;
+}

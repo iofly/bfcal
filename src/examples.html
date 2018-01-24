@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+        <title>BFCal examples</title>
+        <link href="css/bfcal.css" rel="stylesheet" />
+		<script src="js/i18n/bfcal.fr-FR.js"></script>
+        <script src="js/bfcal.js"></script>
+        
+
+		<style type="text/css">
+			body{
+			font-family: 'verdana';
+            }
+            
+            .buttontable{
+                width: 800px;
+            }
+
+            .buttontable button{
+                width: 100%;
+            }
+		</style>
+	</head>
+	
+	<body>
+        <div>
+            Some usage examples. View the page source to see the code.
+            <br />
+            Todo: 
+            <ul>
+                <li>Allow selection of particular days of the week only.</li>
+                <li>Set first day of the week.</li>
+                <li>Disable day patterns i.e. disable weekends. Lot of other stuff.</li>
+                <li>Data drive disabling/date restrictions</li>
+                <li>Whatever else springs to mind</li>
+            </ul>
+             
+        </div>
+        <h2>Example 1</h2>
+        <span>Simplest example, no config</span>
+		<div id="calendar1"></div>
+        <script type="text/javascript">
+            var cc = BFCal.GetInstance('#calendar1', null, function(date) {
+                console.log('on day selected handler 1 ' + JSON.stringify(date) );
+            });
+        </script>
+		
+		<hr />
+        
+        <h2>Example 2</h2>
+        <ul>
+            <li>
+                First visible month is June 2018
+            </li>
+            <li>
+                Pre-selected date = June 13th 2018
+            </li>
+            <li>
+                maxDate = Feb 12 2018, minDate = June 23 2018
+            </li>
+            <li>
+                Weekends are not selectable
+            </li>
+            <li>
+                Custom blocked days: 2,5,7,8,14,22,28 of Feb 2018
+            </li>
+        </ul>
+		<div id="calendar2"></div>
+        <script type="text/javascript">
+
+            var customDaysDisabled1 = {
+                year: 2018,
+                month: 1, //zero based month number
+                days: [2,5,7,8,14,22,28] 
+            }
+
+            var config2 = {
+                Locale: 'en-US', //not used yet, use external /i18n/ js files.
+                minDate: new Date(Date.UTC(2018, 1, 12, 0, 0, 0)),
+                maxDate: new Date(Date.UTC(2018, 5, 23, 0, 0, 0)),
+                selectedDate: new Date(Date.UTC(2018, 5, 13, 0, 0, 0)),
+                startDate: new Date(Date.UTC(2018, 5, 1, 0, 0, 0)),
+                weekendStart: 6,
+                weekendEnd: 0,
+                weekendsEnabled: false,
+                customDaysDisabled: customDaysDisabled1
+            };
+			
+            var cc = BFCal.GetInstance('#calendar2', config2, 
+                    function(date) {
+                        console.log('Calendar 2: on day selected ' + JSON.stringify(date) );
+                    },
+                    function(date) {
+                        console.log('Calendar 2: on before month/year change ' + JSON.stringify(date) );
+                    },
+                    function(date) {
+                        console.log('Calendar 2: on after month/year change ' + JSON.stringify(date) );
+                    }
+                );
+        </script>
+
+<h2>API</h2>
+<table class='buttontable'>
+        <tr>
+            <td>
+                <button type="button" onclick="BFCal.GetInstance('#calendar2').doCommand('nextmonth');">Next month *</button>
+            </td>
+            <td>
+                <button type="button" onclick="BFCal.GetInstance('#calendar2').doCommand('prevmonth');">Previous month *</button>
+            </td>
+            <td>
+                <button type="button" onclick="BFCal.GetInstance('#calendar2').doCommand('nextyear');">Next year *</button>
+            </td>
+            <td>
+                <button type="button" onclick="BFCal.GetInstance('#calendar2').doCommand('prevyear');">Previous year *</button>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <button type="button" onclick="BFCal.GetInstance('#calendar2').doCommand('sayhello');">sayhello</button>
+            </td>
+            <td>
+                <button type="button" onclick="BFCal.GetInstance('#calendar2').doCommand('gototoday');">Today **</button>
+            </td>
+            <td>
+                <button type="button" onclick="BFCal.GetInstance('#calendar2').doCommand('gotodate', new Date(2018, 1, 20, 0,0,0));">Go to date **</button>
+            </td>
+            <td>
+                <button type="button" onclick="console.log(BFCal.GetInstance('#calendar2').doCommand('getdatestring', 'MMMM d, yyyy'));">Getdatestring (to console)</button>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <button type="button" onclick="BFCal.GetInstance('#calendar2').doCommand('clearselection');">Clear selection</button>
+            </td>
+            <td>
+                <button type="button" onclick="BFCal.GetInstance('#calendar2').doCommand('clearDisabledDays');">Clear Disabled Days</button>
+            </td>
+            <td>
+                <button type="button" onclick="BFCal.GetInstance('#calendar2').doCommand('hide');">Hide</button>
+            </td>
+            <td>
+                <button type="button" onclick="BFCal.GetInstance('#calendar2').doCommand('show');">Show</button>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <button type="button" onclick="BFCal.GetInstance('#calendar2').doCommand('buildCalendar');">Build Calendar</button>
+                <!-- <button type="button" onclick="BFCal.GetInstance('#calendar2').doCommand('destroy');">Destroy</button> -->
+            </td>
+            <td>
+                <button type="button" onclick="BFCal.GetInstance('#calendar2').doCommand('showcalendar');">Show Calendar</button>
+            </td>
+            <td>
+                <button type="button" onclick="BFCal.GetInstance('#calendar2').doCommand('showmonthselector');">Show Month Selector</button>
+            </td>
+            <td>
+                <button type="button" onclick="BFCal.GetInstance('#calendar2').doCommand('showyearselector');">Show Year Selector</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button type="button" onclick="BFCal.GetInstance('#calendar2').doCommand('applyDisabledDays', {year: 2018, month: 4, days: [2,5,7,8,14,22,28]});">Disable days (May 2018)</button>
+            </td>
+            <td>
+                    
+            </td>
+            <td>
+                &nbsp;
+            </td>
+            <td>
+                &nbsp;
+            </td>
+        </tr>
+    </table>
+		<ul>
+            <li>
+                * Will execute only if target month, or part of target month is within allowed range. i.e. greater than or equal to minDate if 
+                defined and  less than or equal to maxDate if defined.
+            </li>
+            <li>
+                ** Will execute only if target date is within allowed range. i.e. greater than or equal to minDate if 
+                defined and  less than or equal to maxDate if defined.
+            </li>
+        </ul>
+		<hr />
+        <br /><br /><br /><br /><br />
+	</body>
+</html>
