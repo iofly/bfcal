@@ -5,16 +5,22 @@
 ### Simple Example
 
 ```
-  <div id="calendar1"></div>
-  <script type="text/javascript">
-      var cc = BFCal.GetInstance('#calendar1', null, function(date) {
-          console.log('on day selected handler 1 ' + JSON.stringify(date) );
-      });
-  </script>
+	<link href="css/bfcal.css" rel="stylesheet" />
+	<script src="js/bfcal.js"></script>
+
+	<div id="calendar1"></div>
+	<script type="text/javascript">
+		var cc = BFCal.GetInstance('#calendar1', null, function(date) {
+			console.log('on day selected handler 1 ' + JSON.stringify(date) );
+		});
+  	</script>
 ```
 
 ### More Complex Example
 ```
+	<link href="css/bfcal.css" rel="stylesheet" />
+	<script src="js/bfcal.js"></script>
+	
         <div id="calendar2"></div>
         <script type="text/javascript">
 
@@ -53,7 +59,11 @@
 
 ## API
 
-API calls accessed via the calendar method ".doCommand(string, valParam);"
+API calls accessed via the calendar method "instance.doCommand(string, valParam);".
+
+A useful way to get the instance of the calendar for a particular HTML element is the static methid "BFCal.GetInstance(selector);" where selector is the CSS selector for the element e.g. #calentar1 for an element with id="calendar1".
+
+If there is no calendar associated with that HTML element, then one will be created.
 
 Command | Description
 ------------ | -------------
@@ -74,3 +84,11 @@ hide | Hide calendar component.
 show | Show calendar component.
 applyDisabledDays | Allows custom dates to be disabled. Useful in conjunction with onAfterMonthYearChanges() event and AJAX requests to server to retrieve disabled dates.
 buildCalendar | Refresh the calendar.
+
+
+# i18n
+There is one translation file included, French, in order to show how to implement internationalization. To show the calendar in this language, use the follwing HTML
+
+'''
+<script src="js/i18n/bfcal.en-US.js"></script>
+'''
