@@ -89,6 +89,6 @@ buildCalendar | Refresh the calendar.
 # i18n
 There is one translation file included, French, in order to show how to implement internationalization. To show the calendar in this language, use the follwing HTML
 
-'''
+```
 <script src="js/i18n/bfcal.en-US.js"></script>
-'''
+```
