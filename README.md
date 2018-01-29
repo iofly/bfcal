@@ -84,7 +84,7 @@ hide | Hide calendar component.
 show | Show calendar component.
 applyDisabledDays | Allows custom dates to be disabled. Useful in conjunction with onAfterMonthYearChanges() event and AJAX requests to server to retrieve disabled dates.
 buildCalendar | Refresh the calendar.
-disableCalendar | Disable interactive date selection. You can still call 'setDate' or 'goToToday'.
+disableCalendar | Disable interactive date selection. You can still call 'gotodate' or 'gototoday'.
 enableCalendar | RE-enable interactive date selection.
 # i18n
 There is one translation file included, French, in order to show how to implement internationalization. To show the calendar in this language, use the follwing HTML
