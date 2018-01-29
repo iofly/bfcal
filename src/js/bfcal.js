@@ -135,9 +135,6 @@ class BFCal {
 
     buildCalendar() {
 
-        
-     
-
         this.clear();
         var nextMonthButtonEnabled = true;
         var nextYearButtonEnabled = true;
@@ -793,6 +790,25 @@ class BFCal {
             this.buildCalendar();
             return true;
         }
+        else if (command === "disableCalendar") {
+            
+            this.doCommand('showCalendar');
+
+            var dateNavs = document.querySelectorAll(this.elementSelector + ' button');
+            dateNavs.forEach(element => {
+                element.disabled='disabled';
+            });
+
+            var dateSelectors = document.querySelectorAll(this.elementSelector + ' .bfcDay');
+            dateSelectors.forEach(element => {
+               element.classList.add('bfcCannotSelect');
+            });
+            return true;
+        }
+        else if (command === "enableCalendar") {
+            this.buildCalendar();
+            return true;
+        }
     }
 
     clear() {
@@ -934,9 +950,6 @@ class BFCal {
          var mins = date.getUTCMinutes(); //(from 0-59)
          var secs = date.getUTCSeconds(); //(from 0-59)
    
-
-       
-
         var res = dateFmt || "yyyy-MM-dd";
 
         //backup

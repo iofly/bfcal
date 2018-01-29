@@ -15,6 +15,7 @@
     clear: both;
 }
 
+
 .bfcItem {
     width: 14.28%;
     float: left;
@@ -87,6 +88,7 @@
 
 .btnDateNav:disabled:hover {
     background-color: silver;
+    cursor: not-allowed;
 }
 
 .btnDateNav:hover {
@@ -100,6 +102,16 @@
     text-align: center;
     font-size: 13pt;
 }
+
+.monthDesc button:disabled:hover{
+    background-color: silver;
+    cursor: not-allowed;
+}
+
+.monthDesc button:disabled{
+    background-color: silver;
+}
+
 
 .monthName {
     text-align: right;
