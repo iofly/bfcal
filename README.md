@@ -1,4 +1,4 @@
-# bfcal -  A zero dependency Javascript date picker 
+# bfcal -  A zero dependency Javascript date picker
 
 ## Examples
 

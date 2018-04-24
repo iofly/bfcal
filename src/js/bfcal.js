@@ -789,14 +789,14 @@ class BFCal {
             cal.style.display = 'block';
             return true;
         }
-        /*else if (command === 'destroy') {
-            var container = document.querySelector(this.elementSelector);
+        else if (command === 'destroy') {
+            container = document.querySelector(this.elementSelector);
             container.BFCalInstance = null;
             console.log('destroyed!');
             while (container.firstChild) {
                 container.removeChild(container.firstChild);
             }
-        }*/
+        }
         else if (command === "applyDisabledDays") {
             this.config.customDaysDisabled = valParam;
             this.buildCalendar();
