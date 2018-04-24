@@ -1,6 +1,4 @@
-﻿"use strict";
-
-if((bfclocale==null)||(bfclocale==undefined)||(!bfclocale))
+﻿if((bfclocale==null)||(bfclocale==undefined)||(!bfclocale))
 {
     var bfclocale = {};
     bfclocale.locale = "en-US";
@@ -70,13 +68,15 @@ if((bfclocale==null)||(bfclocale==undefined)||(!bfclocale))
     bfclocale.strings = {
         ok: "Ok",
         cancel: "Cancel"
-    }
+    };
 }
 
 
 class BFCal {
 
     constructor(elementSelector, config, onSelectDay, onBeforeMonthYearChange, onAfterMonthYearChange) {
+        "use strict";
+
         this.elementSelector = elementSelector;
         this.config = {};
         this.loadConfig(config);
@@ -88,6 +88,8 @@ class BFCal {
     }
 
     loadDefaultConfig() {
+        "use strict";
+
         var d = new Date();
         this.config = {
             Locale: 'en-US',
@@ -102,6 +104,8 @@ class BFCal {
     }
 
     loadConfig(cfg) {
+        "use strict";
+
         if (!cfg) {
             this.loadDefaultConfig();
         } else {
@@ -134,6 +138,7 @@ class BFCal {
     }
 
     buildCalendar() {
+        "use strict";
 
         this.clear();
         var nextMonthButtonEnabled = true;
@@ -141,14 +146,21 @@ class BFCal {
         var prevMonthButtonEnabled = true;
         var prevYearButtonEnabled = true;
 
+        var minEndOfMonth = null;
+        var minStartOfMonth = null;
+        var maxEndOfMonth = null;
+        var maxStartOfMonth = null;
+
+        var blank = null;
+
         this.config.startDate = BFCal.GetStartOfMonth(this.config.startDate);
 
         if ((this.config.minDate) && (this.config.maxDate)) {
 
-            var maxEndOfMonth = BFCal.GetLastDayOfMonth(this.config.maxDate);
-            var maxStartOfMonth = BFCal.GetStartOfMonth(this.config.maxDate);
-            var minEndOfMonth = BFCal.GetLastDayOfMonth(this.config.minDate);
-            var minStartOfMonth = BFCal.GetStartOfMonth(this.config.minDate);
+            maxEndOfMonth = BFCal.GetLastDayOfMonth(this.config.maxDate);
+            maxStartOfMonth = BFCal.GetStartOfMonth(this.config.maxDate);
+            minEndOfMonth = BFCal.GetLastDayOfMonth(this.config.minDate);
+            minStartOfMonth = BFCal.GetStartOfMonth(this.config.minDate);
 
             if (this.config.selectedDate) {
                 if (this.config.selectedDate.getTime() < this.config.minDate.getTime()) {
@@ -196,8 +208,8 @@ class BFCal {
                 }
             }
 
-            var minEndOfMonth = BFCal.GetLastDayOfMonth(this.config.minDate);
-            var minStartOfMonth = BFCal.GetStartOfMonth(this.config.minDate);
+            minEndOfMonth = BFCal.GetLastDayOfMonth(this.config.minDate);
+            minStartOfMonth = BFCal.GetStartOfMonth(this.config.minDate);
 
             if (this.config.startDate.getTime() === minStartOfMonth.getTime()) {
                 prevMonthButtonEnabled = false;
@@ -217,8 +229,8 @@ class BFCal {
                 }
             }
 
-            var maxEndOfMonth = BFCal.GetLastDayOfMonth(this.config.maxDate);
-            var maxStartOfMonth = BFCal.GetStartOfMonth(this.config.maxDate);
+            maxEndOfMonth = BFCal.GetLastDayOfMonth(this.config.maxDate);
+            maxStartOfMonth = BFCal.GetStartOfMonth(this.config.maxDate);
 
             if (this.config.startDate.getTime() === maxStartOfMonth.getTime()) {
                 nextMonthButtonEnabled = false;
@@ -232,7 +244,6 @@ class BFCal {
         }
 
         this.handleOnBeforeMonthYearChange(this.config.startDate);
-
         var container = document.querySelector(this.elementSelector);
         container.BFCalInstance = this;
         if (!container) {
@@ -320,7 +331,6 @@ class BFCal {
        
 
 
-
         //Create next year button container and button
         var nextYearDiv = document.createElement('div');
         nextYearDiv.classList.add('nextBtnContainer');
@@ -338,7 +348,6 @@ class BFCal {
 
         btnNextYear.disabled = !nextYearButtonEnabled;
         nextYearDiv.appendChild(btnNextYear);
-
 
 
 
@@ -382,7 +391,7 @@ class BFCal {
         daysGrid.classList.add('bfcDays');
         //Create leading day blanks
         for (i = 0; i < offset; i++) {
-            var blank = document.createElement('div');
+            blank = document.createElement('div');
             blank.classList.add('bfcBlank');
             blank.classList.add('bfcItem');
             daysGrid.appendChild(blank);
@@ -447,8 +456,6 @@ class BFCal {
                 }
             }
 
-            
-
             day.selector = this.elementSelector;
             daysGrid.appendChild(day);
 
@@ -494,14 +501,13 @@ class BFCal {
 
         //Create trailing blanks
         for (i = 0; i < trailingBlanks; i++) {
-            var blank = document.createElement('div');
+            blank = document.createElement('div');
             blank.classList.add('bfcBlank');
             blank.classList.add('bfcItem');
             daysGrid.appendChild(blank);
         }
 
         cal.appendChild(daysGrid);
-
 
         //create div that shows the selected date in friendly form
         var selectedDayDisplay = document.createElement('div');
@@ -520,6 +526,8 @@ class BFCal {
     }
 
     buildMonthSelector() {
+        "use strict";
+
         var mpo = document.createElement('div');
         mpo.classList.add('bfcMonthSelector');
         mpo.classList.add('clearfix');
@@ -561,11 +569,11 @@ class BFCal {
     }
 
     buildYearSelector() {
+        "use strict";
+
         var mpo = document.createElement('div');
         mpo.classList.add('bfcYearSelector');
         mpo.classList.add('clearfix');
-
-
 
         var inputHolder = document.createElement('div');
         inputHolder.classList.add('bfcYearEntry');
@@ -633,24 +641,33 @@ class BFCal {
     }
 
     doCommand(command, valParam) {
+        "use strict";
+
+        var tmp = null;
+        var monthselector = null;
+        var yearselector = null;
+        var calendarpanel = null;
+        var container = null;
+        var cal = null;
+
         if (command === 'nextmonth') {
             this.clear();
             this.config.startDate = BFCal.addMonths(this.config.startDate, 1);
-            var tmp = this.config.startDate;
+            tmp = this.config.startDate;
             this.buildCalendar();
             return tmp.getTime() == this.config.startDate.getTime();
         }
         else if (command === 'prevmonth') {
             this.clear();
             this.config.startDate = BFCal.addMonths(this.config.startDate, -1);
-            var tmp = this.config.startDate;
+            tmp = this.config.startDate;
             this.buildCalendar();
             return tmp.getTime() == this.config.startDate.getTime();
         }
         else if (command === 'nextyear') {
             this.clear();
             this.config.startDate = BFCal.addMonths(this.config.startDate, 12);
-            var tmp = this.config.startDate;
+            tmp = this.config.startDate;
             this.buildCalendar();
             return tmp.getTime() == this.config.startDate.getTime();
         }
@@ -658,25 +675,25 @@ class BFCal {
             this.clear();
             
             this.config.startDate = BFCal.addMonths(this.config.startDate, -12);
-            var tmp = this.config.startDate;
+            tmp = this.config.startDate;
             this.buildCalendar();
             return tmp.getTime() == this.config.startDate.getTime();
         }
         else if (command === 'hidemonthselector') {
-            var monthselector = document.querySelector(this.elementSelector + ' .bfcMonthSelector');
+            monthselector = document.querySelector(this.elementSelector + ' .bfcMonthSelector');
             monthselector.style.display = 'none';
 
             return true;
         }
         else if (command === 'showmonthselector') {
 
-            var monthselector = document.querySelector(this.elementSelector + ' .bfcMonthSelector');
+            monthselector = document.querySelector(this.elementSelector + ' .bfcMonthSelector');
             monthselector.style.display = 'block';
 
-            var yearselector = document.querySelector(this.elementSelector + ' .bfcYearSelector');
+            yearselector = document.querySelector(this.elementSelector + ' .bfcYearSelector');
             yearselector.style.display = 'none';
 
-            var calendarpanel = document.querySelector(this.elementSelector + ' .bfcInner');
+            calendarpanel = document.querySelector(this.elementSelector + ' .bfcInner');
             calendarpanel.style.display = 'none';
 
             return true;
@@ -686,15 +703,14 @@ class BFCal {
             var inst = BFCal.GetInstance(this.elementSelector);
             var yearElem = document.querySelector(this.elementSelector + ' .bfcYearNumber');
             yearElem.value = inst.config.startDate.getUTCFullYear();
-           
 
-            var monthselector = document.querySelector(this.elementSelector + ' .bfcMonthSelector');
+            monthselector = document.querySelector(this.elementSelector + ' .bfcMonthSelector');
             monthselector.style.display = 'none';
 
-            var yearselector = document.querySelector(this.elementSelector + ' .bfcYearSelector');
+            yearselector = document.querySelector(this.elementSelector + ' .bfcYearSelector');
             yearselector.style.display = 'block';
 
-            var calendarpanel = document.querySelector(this.elementSelector + ' .bfcInner');
+            calendarpanel = document.querySelector(this.elementSelector + ' .bfcInner');
             calendarpanel.style.display = 'none';
 
             yearElem.focus();
@@ -703,13 +719,13 @@ class BFCal {
             return true;
         }
         else if (command === 'showcalendar') {
-            var monthselector = document.querySelector(this.elementSelector + ' .bfcMonthSelector');
+            monthselector = document.querySelector(this.elementSelector + ' .bfcMonthSelector');
             monthselector.style.display = 'none';
 
-            var yearselector = document.querySelector(this.elementSelector + ' .bfcYearSelector');
+            yearselector = document.querySelector(this.elementSelector + ' .bfcYearSelector');
             yearselector.style.display = 'none';
 
-            var calendarpanel = document.querySelector(this.elementSelector + ' .bfcInner');
+            calendarpanel = document.querySelector(this.elementSelector + ' .bfcInner');
             calendarpanel.style.display = 'block';
 
             return true;
@@ -762,14 +778,14 @@ class BFCal {
             return true;
         }
         else if (command === 'hide') {
-            var container = document.querySelector(this.elementSelector);
-            var cal = container.querySelector('.bfcInner');
+            container = document.querySelector(this.elementSelector);
+            cal = container.querySelector('.bfcInner');
             cal.style.display = 'none';
             return true;
         }
         else if (command === 'show') {
-            var container = document.querySelector(this.elementSelector);
-            var cal = container.querySelector('.bfcInner');
+            container = document.querySelector(this.elementSelector);
+            cal = container.querySelector('.bfcInner');
             cal.style.display = 'block';
             return true;
         }
@@ -839,6 +855,7 @@ class BFCal {
     }
 
     dateIsSelectable(date){
+        
         if(this.config.minDate){
             if(date.getTime() < this.config.minDate.getTime()){
                 return false;
@@ -1029,4 +1046,3 @@ class BFCal {
         return new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth() + 1, 0));
     }
 }
-

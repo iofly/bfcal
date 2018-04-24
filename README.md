@@ -4,58 +4,55 @@
 
 ### Simple Example
 
-```
-	<link href="css/bfcal.css" rel="stylesheet" />
-	<script src="js/bfcal.js"></script>
-
-	<div id="calendar1"></div>
-	<script type="text/javascript">
-		var cc = BFCal.GetInstance('#calendar1', null, function(date) {
-			console.log('on day selected handler 1 ' + JSON.stringify(date) );
-		});
-  	</script>
+```html
+<link href="css/bfcal.css" rel="stylesheet" />
+<script src="js/bfcal.js"></script>
+<div id="calendar1"></div>
+<script type="text/javascript">
+    var cc = BFCal.GetInstance('#calendar1', null, function(date) {
+        console.log('on day selected handler 1 ' + JSON.stringify(date) );
+    });
+</script>
 ```
 
 ### More Complex Example
-```
-	<link href="css/bfcal.css" rel="stylesheet" />
-	<script src="js/bfcal.js"></script>
-	
-        <div id="calendar2"></div>
-        <script type="text/javascript">
 
-            var customDaysDisabled1 = {
-                year: 2018,
-                month: 1, //zero based month number
-                days: [2,5,7,8,14,22,28] 
+```html
+<link href="css/bfcal.css" rel="stylesheet" />
+<script src="js/bfcal.js"></script>
+
+<div id="calendar2"></div>
+
+<script type="text/javascript">
+    var customDaysDisabled1 = {
+        year: 2018,
+        month: 1, //zero based month number
+        days: [2,5,7,8,14,22,28] 
+    }
+    var config2 = {
+        Locale: 'en-US', //not used yet, use external /i18n/ js files.
+        minDate: new Date(Date.UTC(2018, 1, 12, 0, 0, 0)),
+        maxDate: new Date(Date.UTC(2018, 5, 23, 0, 0, 0)),
+        selectedDate: new Date(Date.UTC(2018, 5, 13, 0, 0, 0)),
+        startDate: new Date(Date.UTC(2018, 5, 1, 0, 0, 0)),
+        weekendStart: 6,
+        weekendEnd: 0,
+        weekendsEnabled: false,
+        customDaysDisabled: customDaysDisabled1
+    };
+    var cc = BFCal.GetInstance('#calendar2', config2,
+            function(date) {
+                console.log('Calendar 2: on day selected ' + JSON.stringify(date) );
+            },
+            function(date) {
+                console.log('Calendar 2: on before month/year change ' + JSON.stringify(date) );
+            },
+            function(date) {
+                console.log('Calendar 2: on after month/year change ' + JSON.stringify(date) );
             }
-
-            var config2 = {
-                Locale: 'en-US', //not used yet, use external /i18n/ js files.
-                minDate: new Date(Date.UTC(2018, 1, 12, 0, 0, 0)),
-                maxDate: new Date(Date.UTC(2018, 5, 23, 0, 0, 0)),
-                selectedDate: new Date(Date.UTC(2018, 5, 13, 0, 0, 0)),
-                startDate: new Date(Date.UTC(2018, 5, 1, 0, 0, 0)),
-                weekendStart: 6,
-                weekendEnd: 0,
-                weekendsEnabled: false,
-                customDaysDisabled: customDaysDisabled1
-            };
-			
-            var cc = BFCal.GetInstance('#calendar2', config2, 
-                    function(date) {
-                        console.log('Calendar 2: on day selected ' + JSON.stringify(date) );
-                    },
-                    function(date) {
-                        console.log('Calendar 2: on before month/year change ' + JSON.stringify(date) );
-                    },
-                    function(date) {
-                        console.log('Calendar 2: on after month/year change ' + JSON.stringify(date) );
-                    }
-                );
-        </script>
+        );
+</script>
 ```
-
 
 ## API
 
@@ -86,9 +83,11 @@ applyDisabledDays | Allows custom dates to be disabled. Useful in conjunction wi
 buildCalendar | Refresh the calendar.
 disableCalendar | Disable interactive date selection. You can still call 'gotodate' or 'gototoday'.
 enableCalendar | RE-enable interactive date selection.
-# i18n
+
+## i18n
+
 There is one translation file included, French, in order to show how to implement internationalization. To show the calendar in this language, use the follwing HTML
 
-```
+```html
 <script src="js/i18n/bfcal.en-US.js"></script>
 ```
