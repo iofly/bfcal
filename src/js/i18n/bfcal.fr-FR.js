@@ -1,6 +1,6 @@
 ﻿var bfclocale = {};
 bfclocale.locale = "fr-FR";
-bfclocale.localeName = "French (France)";
+bfclocale.localeName = "Francais (France)";
 bfclocale.defaultDateFormat = "dd/MM/yyyy";
 
 bfclocale.dow = [

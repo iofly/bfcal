@@ -1,4 +1,4 @@
-﻿if((bfclocale==null)||(bfclocale==undefined)||(!bfclocale))
+﻿if((bfclocale==null) || (bfclocale==undefined) || (!bfclocale))
 {
     var bfclocale = {};
     bfclocale.locale = "en-US";
@@ -470,24 +470,7 @@ class BFCal {
                     }
                 }
 
-                day.onclick = function () {
-
-                    var inst = BFCal.GetInstance(this.selector);
-                    inst.handleDateClick(this.Date);
-                    if (inst) {
-                        inst.config.selectedDate = this.Date;
-                    }
-
-                    var days = document.querySelectorAll(this.selector + " .bfcDay");
-                    for (var n = 0; n < days.length; n++) {
-                        days[n].classList.remove('bfcSelectedDay');
-                    }
-                    this.classList.add('bfcSelectedDay');
-                    var selectionDisplay = document.querySelector(this.selector + " .bfcSelectedDisplay");
-                    if (selectionDisplay) {
-                        selectionDisplay.innerText = BFCal.dateToStr(this.Date, 'MMMM d yyyy');
-                    }
-                };
+                day.onclick = this.dayClick;
             }
             else {
                 day.classList.add('bfcCannotSelect');
@@ -525,6 +508,24 @@ class BFCal {
         this.handleOnAfterMonthYearChange(this.config.startDate);
     }
 
+    dayClick(){
+        var inst = BFCal.GetInstance(this.selector);
+        inst.handleDateClick(this.Date);
+        if (inst) {
+            inst.config.selectedDate = this.Date;
+        }
+
+        var days = document.querySelectorAll(this.selector + " .bfcDay");
+        for (var n = 0; n < days.length; n++) {
+            days[n].classList.remove('bfcSelectedDay');
+        }
+        this.classList.add('bfcSelectedDay');
+        var selectionDisplay = document.querySelector(this.selector + " .bfcSelectedDisplay");
+        if (selectionDisplay) {
+            selectionDisplay.innerText = BFCal.dateToStr(this.Date, 'MMMM d yyyy');
+        }
+    }    
+
     buildMonthSelector() {
         "use strict";
 
@@ -546,16 +547,7 @@ class BFCal {
                 c.innerText = bfclocale.months[monthNum];// 'M';
                 c.selector = this.elementSelector;
                 c.monthNum = monthNum;
-                c.onclick = function () {
-                    
-                    var inst = BFCal.GetInstance(this.selector);
-                    if (inst) {
-                        inst.config.startDate.setUTCMonth(this.monthNum,1);
-                        inst.buildCalendar();
-                        inst.doCommand('hidemonthselector');
-                    }
-                };
-
+                c.onclick = this.monthClick;
                 r.appendChild(c);
                 monthNum++;
             }
@@ -566,6 +558,15 @@ class BFCal {
         mpo.appendChild(table);
         var container = document.querySelector(this.elementSelector);
         container.appendChild(mpo);
+    }
+
+    monthClick(){
+        var inst = BFCal.GetInstance(this.selector);
+                    if (inst) {
+                        inst.config.startDate.setUTCMonth(this.monthNum,1);
+                        inst.buildCalendar();
+                        inst.doCommand('hidemonthselector');
+                    }
     }
 
     buildYearSelector() {

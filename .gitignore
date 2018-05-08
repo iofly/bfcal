@@ -4,6 +4,4 @@ src/httpserver.bat
 *.rar
 /src/node_modules
 src/package-lock.json
-
-src/package-lock.json
 src/serve.bat
