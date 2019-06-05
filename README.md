@@ -64,25 +64,25 @@ If there is no calendar associated with that HTML element, then one will be crea
 
 Command | Description
 ------------ | -------------
-nextmonth | Navigate to the next month. Will navigate only if value of maxDate allows, or null.
-prevmonth | Navigate to previous month. Will navigate only if value of minDate allows, or null.
-nextyear | Navigate to the next year. Will navigate only if value of maxDate allows, or null.
-prevyear | Navigate to previous year. Will navigate only if value of minDate allows, or null.
-hidemonthselector | Hide month selection pane.
-showmonthselector | Show month selection pane.
-showyearselector | Show year entry pane.
-showcalendar | Return to calendar view pane.
-gototoday | Show current month and year in calendar view, and set today as selectedDate.
-gotodate | Requires valParam to be passed as Date. Show Date month and year in calendar view, and set Date as selectedDate.
-getUTCDatestring | Requires valParam to be passed, as date format string, e.g. "yyyy-MM-dd". Returns Date as string.
-clearselection | Clears selected date, sets selectedDate to null.
-clearDisabledDays | Clears custom disabled dates.
-hide | Hide calendar component.
-show | Show calendar component.
-applyDisabledDays | Allows custom dates to be disabled. Useful in conjunction with onAfterMonthYearChanges() event and AJAX requests to server to retrieve disabled dates.
-buildCalendar | Refresh the calendar.
-disableCalendar | Disable interactive date selection. You can still call 'gotodate' or 'gototoday'.
-enableCalendar | RE-enable interactive date selection.
+**nextmonth** | Navigate to the next month. Will navigate only if value of maxDate allows, or null.
+**prevmonth** | Navigate to previous month. Will navigate only if value of minDate allows, or null.
+**nextyear** | Navigate to the next year. Will navigate only if value of maxDate allows, or null.
+**prevyear** | Navigate to previous year. Will navigate only if value of minDate allows, or null.
+**hidemonthselector** | Hide month selection pane.
+**showmonthselector** | Show month selection pane.
+**showyearselector** | Show year entry pane.
+**showcalendar** | Return to calendar view pane.
+**gototoday** | Show current month and year in calendar view, and set today as selectedDate.
+**gotodate** | Requires valParam to be passed as Date. Show Date month and year in calendar view, and set Date as selectedDate.
+**getUTCDatestring** | Requires valParam to be passed, as date format string, e.g. "yyyy-MM-dd". Returns Date as string.
+**clearselection** | Clears selected date, sets selectedDate to null.
+**clearDisabledDays** | Clears custom disabled dates.
+**hide** | Hide calendar component.
+**show** | Show calendar component.
+**applyDisabledDays** | Allows custom dates to be disabled. Useful in conjunction with onAfterMonthYearChanges() event and AJAX requests to server to retrieve disabled dates.
+**buildCalendar** | Refresh the calendar.
+**disableCalendar** | Disable interactive date selection. You can still call 'gotodate' or 'gototoday'.
+**enableCalendar** | RE-enable interactive date selection.
 
 ## i18n
 

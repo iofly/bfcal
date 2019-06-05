@@ -83,7 +83,6 @@ class BFCal {
         this.onSelectDay = onSelectDay;
         this.onBeforeMonthYearChange = onBeforeMonthYearChange;
         this.onAfterMonthYearChange = onAfterMonthYearChange;
-
         this.buildCalendar();
     }
 
@@ -145,14 +144,11 @@ class BFCal {
         var nextYearButtonEnabled = true;
         var prevMonthButtonEnabled = true;
         var prevYearButtonEnabled = true;
-
         var minEndOfMonth = null;
         var minStartOfMonth = null;
         var maxEndOfMonth = null;
         var maxStartOfMonth = null;
-
         var blank = null;
-
         this.config.startDate = BFCal.GetStartOfMonth(this.config.startDate);
 
         if ((this.config.minDate) && (this.config.maxDate)) {
@@ -184,10 +180,6 @@ class BFCal {
                 nextMonthButtonEnabled = false;
                 nextYearButtonEnabled = false;
             }
-            //else if ((this.config.startDate.getTime() >= minStartOfMonth.getTime()) && (this.config.startDate.getTime() < maxStartOfMonth.getTime())) {
-            //    //all good
-            //    console.log('3 new this.config.startDate = ' + this.config.startDate + ' minStartOfMonth = ' + minStartOfMonth + ' maxStartOfMonth=' + maxStartOfMonth);
-            //}
             else if ((this.config.startDate.getTime() >= minStartOfMonth.getTime()) && (this.config.startDate.getTime() >= maxStartOfMonth.getTime())) {
                 this.config.startDate = maxStartOfMonth;
                 nextYearButtonEnabled = false;
@@ -330,7 +322,6 @@ class BFCal {
         monthDesc.appendChild(yearName);
        
 
-
         //Create next year button container and button
         var nextYearDiv = document.createElement('div');
         nextYearDiv.classList.add('nextBtnContainer');
@@ -350,7 +341,6 @@ class BFCal {
         nextYearDiv.appendChild(btnNextYear);
 
 
-
         //Create next month button container and button
         var nextMonthDiv = document.createElement('div');
         nextMonthDiv.classList.add('nextBtnContainer');
@@ -367,7 +357,6 @@ class BFCal {
         };
         btnNextMonth.disabled = !nextMonthButtonEnabled;
         nextMonthDiv.appendChild(btnNextMonth);
-
 
 
         //Create day of week header above date grid
@@ -410,7 +399,6 @@ class BFCal {
                 isCustomDisabledMonth = true;
            }
         }
-
 
         //Create days of the month
         for (i = 1; i <= daysInMonth; i++) {
@@ -491,7 +479,6 @@ class BFCal {
         }
 
         cal.appendChild(daysGrid);
-
         //create div that shows the selected date in friendly form
         var selectedDayDisplay = document.createElement('div');
         selectedDayDisplay.classList.add('bfcSelectedDisplay');
@@ -501,10 +488,8 @@ class BFCal {
         cal.appendChild(selectedDayDisplay);
 
         container.appendChild(cal);
-
         this.buildMonthSelector();
         this.buildYearSelector();
-
         this.handleOnAfterMonthYearChange(this.config.startDate);
     }
 
@@ -532,7 +517,6 @@ class BFCal {
         var mpo = document.createElement('div');
         mpo.classList.add('bfcMonthSelector');
         mpo.classList.add('clearfix');
-
         var table = document.createElement('table');
         table.classList.add('bfcMonthTable');
 
@@ -551,7 +535,6 @@ class BFCal {
                 r.appendChild(c);
                 monthNum++;
             }
-
             table.appendChild(r);
         }
 
@@ -580,17 +563,14 @@ class BFCal {
         inputHolder.classList.add('bfcYearEntry');
         mpo.appendChild(inputHolder);
 
-
         var tb = document.createElement('input');
         tb.classList.add('bfcYearNumber');
         tb.type = 'number';
         inputHolder.appendChild(tb);
 
-
         var buttonHolder = document.createElement('div');
         buttonHolder.classList.add('bfcYearButtonHolder');
         mpo.appendChild(buttonHolder);
-
 
         var btnOk = document.createElement('button');
         btnOk.type = 'button';
@@ -636,7 +616,6 @@ class BFCal {
             instance.doCommand('showcalendar');
         };
         buttonHolder.appendChild(btnCancel);
-
         var container = document.querySelector(this.elementSelector);
         container.appendChild(mpo);
     }
@@ -674,7 +653,6 @@ class BFCal {
         }
         else if (command === 'prevyear') {
             this.clear();
-            
             this.config.startDate = BFCal.addMonths(this.config.startDate, -12);
             tmp = this.config.startDate;
             this.buildCalendar();
@@ -683,7 +661,6 @@ class BFCal {
         else if (command === 'hidemonthselector') {
             monthselector = document.querySelector(this.elementSelector + ' .bfcMonthSelector');
             monthselector.style.display = 'none';
-
             return true;
         }
         else if (command === 'showmonthselector') {
@@ -738,7 +715,6 @@ class BFCal {
         else if (command === 'gototoday') {
             var today = new Date();
             today = new Date(Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate()));
-
             if(!this.dateIsSelectable(today)){
                 return false;
             }
@@ -750,7 +726,6 @@ class BFCal {
             return true;
         }
         else if (command === 'gotodate') {
-           
             if(!this.dateIsSelectable(valParam)){
                 return false;
             }
@@ -914,12 +889,6 @@ class BFCal {
                     elem.BFCalInstance.loadDefaultConfig();
                 }
             }
-            //if (onDaySelected) {
-                //elem.BFCalInstance = onDaySelected;
-                //onDaySelected(elem.BFCalInstance.config.selectedDate);
-            //}
-            
-
             return elem.BFCalInstance;
         }
         else {
@@ -955,7 +924,6 @@ class BFCal {
         else {
              return 5;
         }
-
     }
 
     static dateToStr(date, dateFmt, isutc) {
